@@ -1,6 +1,7 @@
+//
 library;
 
-import 'dart:async';
+import 'dart:async' show StreamSubscription;
 
 import 'package:flutter/material.dart'
     show
