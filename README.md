@@ -1,5 +1,7 @@
 # Overlay Model
 
+see in [Pub.dev](https://pub.dev/packages/overlay_model), [Github](https://github.com/nomagicisreal/overlay_model)
+
 you can find the example below in `example/overlay_model_example.dart`.
 
 without this library, this is how we create overlay by `OverlayEntry` and `OverlayState`:
