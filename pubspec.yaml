@@ -1,6 +1,6 @@
 name: overlay_model
 description: easier way and advanced control on flutter overlay insertion, update, removal in State.
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/nomagicisreal/overlay_model
 
 environment:

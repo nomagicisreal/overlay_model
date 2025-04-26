@@ -3,6 +3,7 @@
 you can find the example below in `example/overlay_model_example.dart`.
 
 without this library, this is how we create overlay by `OverlayEntry` and `OverlayState`:
+
 ```dart
 class _SampleState extends State<Sample> {
   Widget buildOverlay(BuildContext context) =>
@@ -45,6 +46,7 @@ class _SampleState extends State<Sample> {
 ```
 
 with this library, we can create overlay by a mixin without holding `OverlayEntry` instance:
+
 ```dart
 class _SampleState extends State<Sample> with OverlayMixin<Sample> {
   // ...
@@ -64,10 +66,12 @@ class _SampleState extends State<Sample> with OverlayMixin<Sample> {
 ```
 
 Not only we don't have to create an overlay entry instance,
-but we also have more control on overlay insertion, update, removal by `OverlayPlan` and `OverlayModel`.
-Not only `OverlayMixin`, there are also `OverlayFutureMixin` and `OverlayStreamMixin` !
+but we also have more control on overlay insertion, update, removal by `OverlayPlan` and
+`OverlayModel`.\n
+Not just `OverlayMixin`, there are also `OverlayFutureMixin` and `OverlayStreamMixin` !
 
-take `OverlayFutureMixin` for sample:
+take `OverlayFutureMixin` for example:
+
 ```dart
 class _SampleState extends State<Sample> with OverlayMixin<Sample>, OverlayFutureMixin<Sample> {
   void toggle() =>
@@ -97,7 +101,8 @@ class _SampleState extends State<Sample> with OverlayMixin<Sample>, OverlayFutur
 }
 ```
 
-take `OverlayStreamMixin` for sample:
+take `OverlayStreamMixin` for example:
+
 ```dart
 class _SampleState extends State<Sample>
     with OverlayMixin<Sample>, OverlayFutureMixin<Sample>, OverlayStreamMixin<Sample> {
@@ -108,31 +113,32 @@ class _SampleState extends State<Sample>
     }
   }
 
-  void toggle() => overlayListenStream(
-    stream: stream(),
-    planFor: (data) {
-      if (data % 2 == 0) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('received $data and insert overlay'),
-            duration: Duration(seconds: 1),
-          ),
-        );
-        return OverlayPlan.model(
-          isRemovable: true,
-          builder: (context, model) => buildOverlay(context, model, data),
-        );
-      }
-      overlays.first.remove();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('previous overlay is removed'),
-          duration: Duration(seconds: 1),
-        ),
+  void toggle() =>
+      overlayListenStream(
+        stream: stream(),
+        planFor: (data) {
+          if (data % 2 == 0) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('received $data and insert overlay'),
+                duration: Duration(seconds: 1),
+              ),
+            );
+            return OverlayPlan.model(
+              isRemovable: true,
+              builder: (context, model) => buildOverlay(context, model, data),
+            );
+          }
+          overlays.first.remove();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('previous overlay is removed'),
+              duration: Duration(seconds: 1),
+            ),
+          );
+          return null;
+        },
       );
-      return null;
-    },
-  );
 
   Widget buildOverlay(BuildContext context, OverlayModel model, int data) =>
       Center(
@@ -145,7 +151,7 @@ class _SampleState extends State<Sample>
           ),
         ),
       );
-  // ...
+// ...
 }
 ```
 
