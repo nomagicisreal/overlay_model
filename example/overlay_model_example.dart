@@ -25,8 +25,7 @@ class _SampleState extends State<Sample>
     with
         OverlayMixin<Sample>,
         OverlayFutureMixin<Sample>,
-        OverlayStreamMixin<Sample>
-        {
+        OverlayStreamMixin<Sample> {
   ///
   ///
   /// comparison for old way and new way
