@@ -69,7 +69,7 @@ class _SampleState extends State<Sample> with OverlayMixin<Sample> {
 
 Not only we don't have to create an overlay entry instance,
 but we also have more control on overlay insertion, update, removal by `OverlayPlan` and
-`OverlayModel`.\n
+`OverlayModel`.
 Not just `OverlayMixin`, there are also `OverlayFutureMixin` and `OverlayStreamMixin` !
 
 take `OverlayFutureMixin` for example:
